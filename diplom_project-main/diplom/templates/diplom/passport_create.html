@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+  {% if not is_edit %}
+    Создание записи о паспорте
+  {% else %}
+    Редактирование записи о паспорте
+  {% endif %}
+{% endblock %}
+{% block content %}
+  {% if is_edit %}
+    {% with form_title='Редактирование записи о паспорте' form_url='passport:edit' url_param=passport_id button_name='Редактировать' %}
+      {% include 'includes/passport_form.html' %}
+    {% endwith %}
+  {% else %}
+    {% with form_title='Создание записи о паспорте' form_url='passport:create' button_name='Создать запись' %}
+      {% include 'includes/passport_form.html' %}
+    {% endwith %}
+  {% endif %}
+{% endblock %}
