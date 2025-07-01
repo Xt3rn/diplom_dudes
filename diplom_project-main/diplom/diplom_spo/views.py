@@ -38,15 +38,28 @@ def diplom_edit(request, pk):
     return render(request, 'includes/diplom_form.html', {'form': form, 'diplom': diplom}) 
 
 
+# def diplom_create(request):
+#     if request.method == 'POST':
+#         form = DiplomForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect(reverse('diplom_spo:index'))
+#     else:
+#         form = DiplomForm()
+#     return render(request, 'includes/diplom_form.html', {'form': form})
+
 def diplom_create(request):
     if request.method == 'POST':
-        form = DiplomForm(request.POST)
+        form = DiplomForm(request.POST, request.FILES)  
         if form.is_valid():
-            form.save()
+            diplom = form.save()
             return redirect(reverse('diplom_spo:index'))
+        else:
+            print(form.errors)  
+            return render(request, 'diplom/diplom_form.html', {'form': form}) 
     else:
         form = DiplomForm()
-    return render(request, 'includes/diplom_form.html', {'form': form})
+    return render(request, 'diplom/diplom_form.html', {'form': form})  
 
 
 # def diplom_create(request):
