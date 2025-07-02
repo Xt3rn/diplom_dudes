@@ -35,7 +35,7 @@ def diplom_edit(request, pk):
             print(form.errors) 
     else:
         form = DiplomForm(instance=diplom)  
-    return render(request, 'includes/diplom_form.html', {'form': form, 'diplom': diplom}) 
+    return render(request, 'includes/diplom_form.html', {'form': form}) 
 
 
 # def diplom_create(request):
@@ -59,7 +59,7 @@ def diplom_create(request):
             return render(request, 'diplom/diplom_form.html', {'form': form}) 
     else:
         form = DiplomForm()
-    return render(request, 'diplom/diplom_form.html', {'form': form})  
+    return render(request, 'includes/diplom_form.html', {'form': form})  
 
 
 # def diplom_create(request):
